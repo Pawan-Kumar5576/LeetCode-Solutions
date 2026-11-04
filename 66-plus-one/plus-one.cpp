@@ -1,21 +1,17 @@
 class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
-        int carry=1;
-        vector<int>answer(digits.size());
-        int i=digits.size()-1;
-        while(i>=0){
-           int sum=digits[i]+carry;
-           int digits=sum%10;
-            carry=sum/10;
-
-            answer[i]=digits;
-            i--;
+        int n=digits.size();
+        for(int i=n-1;i>=0;i--){
+            if(digits[i]==9){
+                digits[i]=0;
+            }
+            else{
+                digits[i]=digits[i]+1;
+                return digits;
+            }
         }
-        if(carry!=0){
-            answer.insert(answer.begin(),carry);
-        }
-        return answer;
-        
+        digits.insert(digits.begin(),1);
+        return digits;
     }
 };
